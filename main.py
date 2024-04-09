@@ -36,7 +36,8 @@ class NewsBot:
         except Exception as e:
             self._logger.error(
                 f"An error occurred while navigating to {url}: {
-                    str(e)}")
+                    str(e)}"
+            )
 
     def _search_news(self, search_phrase, category):
         self._logger.info(
@@ -67,7 +68,8 @@ class NewsBot:
             else:
                 self._logger.error(
                     f"Error downloading image: {
-                        response.status_code}")
+                        response.status_code}"
+                )
                 return None
         except Exception as e:
             self._logger.error(f"Error downloading image: {str(e)}")
