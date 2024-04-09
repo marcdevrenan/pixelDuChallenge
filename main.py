@@ -12,7 +12,12 @@ import logging
 
 class NewsBot:
     def __init__(self):
-        self.driver = webdriver.Chrome()
+        self.configure_logging()
+        self.initialize_browser()
+        self.results = []
+        self.temp_folder = 'temp_folder'
+
+    def configure_logging(self):
         self.logger = logging.getLogger(__name__)
         self.logger.setLevel(logging.INFO)
         self.handler = logging.StreamHandler()
@@ -20,9 +25,10 @@ class NewsBot:
         self.formatter = logging.Formatter('%(asctime)s - %(levelname)s - %(message)s')
         self.handler.setFormatter(self.formatter)
         self.logger.addHandler(self.handler)
-        self.results = []
-        self.temp_folder = 'temp_folder'
 
+    def initialize_browser(self):
+        self.driver = webdriver.Chrome()
+        
     def navigate_to_site(self):
         try:
             self.driver.get("https://news.yahoo.com/")
